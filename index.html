@@ -3,722 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chattak - Afghanistan's first electronic money platform. Send, receive and manage money securely on your mobile phone.">
-    <meta property="og:title" content="Chattak | The Future of Money in Afghanistan">
-    <meta property="og:description" content="Join the waitlist for Afghanistan's revolutionary electronic payment platform.">
-    <meta property="og:image" content="images/logo.png">
-    <title>Chattak | Your new favorite payment solution</title>
-    <link href="src/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="images/logo.png"/>
+    <title>Chattak - New Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <style>
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #004E89;
+            --accent-color: #F7931E;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #F5F5F5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--secondary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: white !important;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+        }
+        
+        .features-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .logo-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <div class="logo-wrap">
-        <div class="logo-symbol">
-        <img src = "images/logo.png" alt="Chattak logo" class="nav-logo", height="40", width="40"></div>
-        <div class="logo-text">Chattak</div>
-      </div>
-
-      <div class="nav-links">
-        <a href="#product">Product</a>
-        <a href="#developers">Developers</a>
-        <a href="#use-cases">Use cases</a>
-        <a href="privacy_policy.html">Privacy</a>
-        <a href="terms-of-services.html">Terms</a>
-        <a href="#" class="login-btn">Log in</a>
-      </div>
-
-      <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <!-- Mobile dropdown -->
-    <div class="mobile-nav" id="mobileNav">
-      <a href="#product">Product</a>
-      <a href="#developers">Developers</a>
-      <a href="#use-cases">Use cases</a>
-      <a href="privacy_policy.html">Privacy</a>
-      <a href="terms-of-services.html">Terms</a>
-      <a href="#" class="login-btn mobile-login">Log in</a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero" id="product">
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="rotator" aria-label="The Future of Money in">
-            <span class="rotator-track" id="rotatorTrack">
-              <span class="rotator-item">The Future of Money</span>
-              <span class="rotator-item">Seamless Experience</span>
-              <span class="rotator-item">Instant Payments</span>
-
-              <!-- Duplicate first item for seamless loop -->
-              <span class="rotator-item">The Future of Money</span>
-            </span>
-          </span>
-          <br />
-          with <span class="highlight js-text-underline" data-underline="sm">Chattak</span>
-        </h1>
-
-        <p>
-        Chattak is revolutionizing how Afghans send, receive, and manage money with our secure electronic payment platform.
-        </p>
-        <a href="#" class="m-button__wrap" data-btn="up">
-          <span class="m-b-bg" aria-hidden="true"></span>
-
-          <span class="m-b-text" aria-hidden="true">
-            <span class="m-b-text-static">Get started</span>
-            <span class="m-b-text-up">Get started</span>
-          </span>
-
-          <span class="m-b-arrow" aria-hidden="true">
-            <span class="m-b-arrow-static m-b-arrow img" ><img src="icons/right-arrow.svg" alt="right-arrow"></span>
-            <span class="m-b-arrow-up m-b-arrow img"><img src="icons/right-arrow.svg" alt="right-arrow"></span>
-          </span>
-
-          <span class="sr-only">Get started</span>
-        <a>
-
-        </a>
-          <a href="#" class="m-button__wrap" data-btn="up">
-          <span class="m-b-bg" aria-hidden="true"></span>
-
-          <span class="m-b-text" aria-hidden="true">
-            <span class="m-b-text-static">Learn More</span>
-            <span class="m-b-text-up">Learn More</span>
-          </span>
-
-          <span class="m-b-arrow" aria-hidden="true">
-            <span class="m-b-arrow-static m-b-arrow img" ><img src="icons/right-arrow.svg" alt="right-arrow"></span>
-            <span class="m-b-arrow-up m-b-arrow img"><img src="icons/right-arrow.svg" alt="right-arrow"></span>
-          </span>
-
-          <span class="sr-only">Learn More</span>
-        </a>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-card hero-card-1">
-          <h3>💳 No chargebacks</h3>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="./images/logo.png" alt="Chattak Logo" class="logo-img" style="height: 40px;">
+                Chattak
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="hero-card hero-card-2">
-          <h3>⚡ Instant</h3>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <h1>Welcome to Chattak</h1>
+            <p>Your premier platform for modern communication and collaboration</p>
+            <a href="#features" class="btn btn-primary btn-lg">Explore Features</a>
         </div>
-        <div class="hero-card hero-card-3">
-          <h3>💰 Lower fees</h3>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Bank Logos Marquee -->
-  <section class="marquee-section">
-  <div class="marquee-text">Connecting Financial institutes across the country...</div>
-
-  <div class="marquee-viewport">
-    <div class="marquee">
-      <div class="bank-logo"><img src="images/hesabpay_logo.png" alt="Hesabpay"></div>
-      <div class="bank-logo"><img src="images/AIB_logo.png" alt="AIB"></div>
-      <div class="bank-logo"><img src="images/AUB_logo.png" alt="AUB"></div>
-      <div class="bank-logo"><img src="images/mHawala_logo.png" alt="mHawala"></div>
-      <div class="bank-logo"><img src="images/azizibank_logo.png" alt="Azizi Bank"></div>
-
-      <!-- duplicate for seamless loop -->
-      <div class="bank-logo"><img src="images/hesabpay_logo.png" alt="Hesabpay"></div>
-      <div class="bank-logo"><img src="images/AIB_logo.png" alt="AIB"></div>
-      <div class="bank-logo"><img src="images/AUB_logo.png" alt="AUB"></div>
-      <div class="bank-logo"><img src="images/mHawala_logo.png" alt="mHawala"></div>
-      <div class="bank-logo"><img src="images/azizibank_logo.png" alt="Azizi Bank"></div>
-    </div>
-  </div>
-</section>
-
-
-  <!-- USP Section -->
-  <section class="section-usp">
-    <div class="container-large">
-      <div class="usps-parent">
-        <div class="usps-child left">
-          <div class="usp-card first">
-            <div class="usp-icon">
-              <div class="icon-circle"></div>
-              <div class="icon-circle-bg"></div>
-            </div>
-            <div class="usp-card-text">
-              <h3>Eliminate chargebacks</h3>
-              <p>Eliminate credit card chargebacks with open banking.</p>
-            </div>
-          </div>
-
-          <div class="usp-card second">
-            <div class="usp-icon">
-              <div class="icon-circles">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
-            </div>
-            <div class="usp-card-text">
-              <h3>Reduce cost</h3>
-              <p>3x times less expensive than credit cards.</p>
-            </div>
-          </div>
-
-          <div class="usp-card third">
-            <div class="usp-icon">
-              <div class="check-icon">✓</div>
-            </div>
-            <div class="usp-card-text">
-              <h3>Instant settlements</h3>
-              <p>Payments are settled instantly into your bank account.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="usps-child right">
-          <div class="usps-content">
-            <h2>Tired of paying high <span class="highlight">Card fees?</span></h2>
-            <p>Join payments evolution with us. Accept bank payments that are settled in seconds.</p>
-            <a href="#" class="cta-button">Get in touch →</a>
-          </div>
-
-          <div class="cards-visual">
-            <div class="usp-float usp-float-1"></div>
-            <div class="usp-float usp-float-2"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Payment Grid Section -->
-  <section class="section-payment-grid">
-    <div class="container-medium">
-      <div class="payment-grid-title">
-        <h2>One <span class="highlight">payments</span> power grid</h2>
-      </div>
-
-      <div class="payment-grid-parent">
-        <div class="payment-grid-banks">
-          <div class="bank-grid-row">
-            <div class="bank-box">
-              <div class="bank-emoji">🏦</div>
-              <p>Barclays Bank</p>
-            </div>
-            <div class="bank-box">
-              <div class="bank-emoji">🏦</div>
-              <p>HSBC</p>
-            </div>
-          </div>
-
-          <div class="bank-grid-row">
-            <div class="bank-box">
-              <div class="bank-emoji">🏦</div>
-              <p>Bank of Scotland</p>
-            </div>
-            <div class="bank-box">
-              <div class="bank-emoji">🏦</div>
-              <p>Revolut Bank</p>
-            </div>
-          </div>
-
-          <div class="bank-grid-row">
-            <div class="bank-box">
-              <div class="bank-emoji">🏦</div>
-              <p>KBC Group</p>
-            </div>
-            <div class="bank-box">
-              <div class="bank-emoji">🏦</div>
-              <p>UBS</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="payment-grid-center" aria-label="Payment network">
-          <div class="chattak-logo-circle">
-            <div class="logo-symbol">C</div>
-          </div>
-
-          <svg class="connection-lines" viewBox="0 0 300 400" aria-hidden="true">
-            <line x1="0" y1="50" x2="150" y2="200" stroke="#E4E7EB" stroke-width="2" />
-            <line x1="0" y1="150" x2="150" y2="200" stroke="#E4E7EB" stroke-width="2" />
-            <line x1="0" y1="250" x2="150" y2="200" stroke="#E4E7EB" stroke-width="2" />
-            <line x1="150" y1="200" x2="300" y2="200" stroke="#E4E7EB" stroke-width="2" />
-          </svg>
-        </div>
-
-        <div class="payment-grid-merchant">
-          <div class="merchant-card">
-            <div class="merchant-img"></div>
-            <div class="merchant-content">
-              <p class="product-name">Air pods</p>
-              <h3 class="price">€ 500.00</h3>
-              <div class="pay-button">Pay by Bank</div>
-            </div>
-          </div>
-
-          <div class="transaction-success">
-            <div class="success-icon">✓</div>
-            <p>Successful transaction</p>
-            <div class="success-message">
-              <span>💳</span>
-              <span>The money are in your bank!</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Horizontal USP Section -->
-  <section class="section-horizontal-usp">
-    <div class="container-large">
-      <div class="horizontal-usp-parent">
-        <div class="horizontal-usp-header">
-          <h2>Unlock the power <span class="highlight">of banking data</span></h2>
-          <a href="#" class="cta-button-dark">Get started →</a>
-        </div>
-
-        <div class="horizontal-cards-wrap">
-          <div class="horizontal-card">
-            <div class="h-card-icon">
-              <div class="icon-shape circle-large"></div>
-              <div class="icon-shape semicircle"></div>
-            </div>
-            <div class="h-card-text">
-              <h3>Balance</h3>
-              <p>Verify real-time account balances.</p>
-            </div>
-          </div>
-
-          <div class="horizontal-card">
-            <div class="h-card-text">
-              <h3>Transactions</h3>
-              <p>Access detailed transaction history.</p>
-            </div>
-            <div class="h-card-icon right">
-              <div class="icon-shape circle-small"></div>
-              <div class="icon-shape circle-small-2"></div>
-            </div>
-          </div>
-
-          <div class="horizontal-card">
-            <div class="h-card-icon">
-              <div class="icon-shape square-1"></div>
-              <div class="icon-shape square-2"></div>
-            </div>
-            <div class="h-card-text">
-              <h3>Bank account details</h3>
-              <p>Verify users' identities and reduce fraud.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Conversion Wizard Section -->
-  <section class="section-wizard" id="developers">
-    <div class="container-large">
-      <div class="wizard-parent">
-        <div class="wizard-child left">
-          <div class="phone-mockup">
-            <div class="phone-frame">
-              <div class="phone-screen">
-                <div class="phone-notch"></div>
-                <div class="payment-form">
-                  <div class="form-header">
-                    <div class="back-arrow">←</div>
-                    <div class="form-title">Payment</div>
-                  </div>
-                  <div class="form-amount">€ 500.00</div>
-                  <div class="form-fields">
-                    <div class="form-field"></div>
-                    <div class="form-field"></div>
-                    <div class="form-field large"></div>
-                  </div>
-                  <div class="form-button">Continue</div>
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Real-time Messaging</h3>
+                        <p>Instant communication with our high-performance messaging system</p>
+                    </div>
                 </div>
-              </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure & Encrypted</h3>
+                        <p>End-to-end encryption ensures your conversations remain private</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Team Collaboration</h3>
+                        <p>Perfect tools for teams to work together seamlessly</p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <div class="wizard-child right">
-          <h2><span class="highlight">Conversion</span><br />wizard</h2>
-          <p>
-            Benefit from our fully customizable payment form created to convert and retain your customers.
-            You are in full control. From the colors to the layout to the payments journey.
-          </p>
-          <a href="#" class="cta-button-dark">Get in touch →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tabs Section -->
-  <section class="section-tabs">
-    <div class="container-small">
-      <div class="tabs-title">
-        <h2>Payment <span class="highlight">way</span> with</h2>
-      </div>
-
-      <div class="tabs-wrapper">
-        <div class="tabs-nav" role="tablist" aria-label="Payment comparison">
-          <button class="tab-button active" data-tab="chattak" role="tab" aria-controls="chattak" aria-selected="true">
-            <div class="tab-icon">C</div>
-            <span>chattak</span>
-          </button>
-
-          <button class="tab-button" data-tab="regular" role="tab" aria-controls="regular" aria-selected="false">
-            <span>Regular</span>
-          </button>
-        </div>
-
-        <div class="tabs-content">
-          <div class="tab-panel active" id="chattak" role="tabpanel">
-            <div class="tab-flow">
-              <div class="flow-box">
-                <div class="flow-icon">👤</div>
-                <h4>Customer</h4>
-              </div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-box">
-                <div class="flow-icon logo">C</div>
-                <h4>chattak</h4>
-              </div>
-              <div class="flow-arrow">→</div>
-              <div class="flow-box">
-                <div class="flow-icon">✓</div>
-                <h4>Merchant</h4>
-              </div>
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">About Chattak</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./images/about-banner.png" alt="About Chattak - Communication Platform" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <p>Chattak is a cutting-edge communication platform designed to help teams collaborate efficiently. With a focus on security, performance, and user experience, we bring modern messaging to your organization.</p>
+                    <p>Our platform supports seamless integration with existing workflows and tools, making it easy to adopt and scale.</p>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <div class="tab-panel" id="regular" role="tabpanel">
-            <div class="tab-flow vertical">
-              <div class="flow-row">
-                <div class="flow-box small"><div class="flow-icon">👤</div><p>Customer</p></div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-box small"><div class="flow-icon">🛒</div><p>Merchant</p></div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-box small"><div class="flow-icon">🔄</div><p>Gateway</p></div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-box small"><div class="flow-icon">🏦</div><p>Acquiring Bank</p></div>
-              </div>
-
-              <div class="flow-arrow down">↓</div>
-
-              <div class="flow-row">
-                <div class="flow-box small"><div class="flow-icon">💻</div><p>Processor</p></div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-box small"><div class="flow-icon">💳</div><p>Card schemes</p></div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-box small"><div class="flow-icon">🏦</div><p>Customer Bank</p></div>
-              </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- Dashboard Screenshots Section -->
-  <section class="section-blocks">
-    <div class="container-medium">
-      <div class="blocks-title">
-        <h2>Turnkey <span class="highlight">API solution</span> designed to scale your business</h2>
-      </div>
-
-      <div class="block-wrap first">
-        <div class="block-content">
-          <div class="block-text">
-            <h3>Built in mind for developers</h3>
-            <p>
-              Go from idea to implementation quickly with robust, bank-grade APIs. Our documentation,
-              sample data and code snippets provide developers with powerful tools to launch your next innovation.
-            </p>
-          </div>
-
-          <div class="block-image">
-            <div class="dashboard-mockup api">
-              <div class="dashboard-header">
-                <div class="dash-tabs">
-                  <span class="dash-tab active">API</span>
-                  <span class="dash-tab">Webhooks</span>
-                  <span class="dash-tab">Keys</span>
-                </div>
-              </div>
-
-              <div class="code-block">
-                <div class="code-line">const payment = await chattak.create({</div>
-                <div class="code-line indent">amount: 50000,</div>
-                <div class="code-line indent">currency: 'EUR',</div>
-                <div class="code-line indent">customer: 'cus_123',</div>
-                <div class="code-line">});</div>
-              </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2025 Chattak. All rights reserved.</p>
+            <div>
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin"></i></a>
             </div>
-          </div>
         </div>
-      </div>
+    </footer>
 
-      <div class="block-wrap second">
-        <div class="block-content reverse">
-          <div class="block-image">
-            <div class="dashboard-mockup transactions">
-              <div class="dashboard-header">
-                <h4>All Transactions</h4>
-                <div class="filter-pills">
-                  <span class="pill">All</span>
-                  <span class="pill">Successful</span>
-                  <span class="pill">Pending</span>
-                </div>
-              </div>
-
-              <div class="transactions-list">
-                <div class="transaction-row">
-                  <div class="tx-icon">💳</div>
-                  <div class="tx-details">
-                    <div class="tx-name">Payment #1234</div>
-                    <div class="tx-date">2 hours ago</div>
-                  </div>
-                  <div class="tx-amount">€ 500.00</div>
-                </div>
-
-                <div class="transaction-row">
-                  <div class="tx-icon">💳</div>
-                  <div class="tx-details">
-                    <div class="tx-name">Payment #1233</div>
-                    <div class="tx-date">5 hours ago</div>
-                  </div>
-                  <div class="tx-amount">€ 250.00</div>
-                </div>
-
-                <div class="transaction-row">
-                  <div class="tx-icon">💳</div>
-                  <div class="tx-details">
-                    <div class="tx-name">Payment #1232</div>
-                    <div class="tx-date">1 day ago</div>
-                  </div>
-                  <div class="tx-amount">€ 1,200.00</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="block-text">
-            <h2>All your transactions and data in <span class="highlight">one place</span></h2>
-            <p>
-              Reconcile and track transactions from initiation to settlement. Create an account to start accepting
-              payments today so you can focus on growing your business while we take care of the payments.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="block-wrap third">
-        <div class="block-content">
-          <div class="block-text">
-            <h2>Payments <span class="highlight">intelligence</span></h2>
-            <h5 class="subtitle">Reporting at its best.</h5>
-            <p>See payments data how you like it when you want it. Analyse and make decisions.</p>
-          </div>
-
-          <div class="block-image">
-            <div class="dashboard-mockup intelligence">
-              <div class="chart-header">
-                <h4>Revenue Overview</h4>
-                <select class="chart-select">
-                  <option>Last 30 days</option>
-                </select>
-              </div>
-
-              <div class="chart-area">
-                <svg viewBox="0 0 400 200" class="line-chart" aria-hidden="true">
-                  <polyline
-                    points="0,150 50,120 100,140 150,80 200,100 250,60 300,90 350,40 400,70"
-                    fill="none"
-                    stroke="#8247FF"
-                    stroke-width="3"
-                  />
-                  <circle cx="400" cy="70" r="5" fill="#8247FF"></circle>
-                </svg>
-              </div>
-
-              <div class="chart-stats">
-                <div class="stat">
-                  <div class="stat-label">Total Revenue</div>
-                  <div class="stat-value">€ 45,231</div>
-                </div>
-                <div class="stat">
-                  <div class="stat-label">Transactions</div>
-                  <div class="stat-value">1,234</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Use Cases Section (single copy) -->
-  <section class="section-use-cases" id="use-cases">
-    <div class="container-small">
-      <div class="use-cases-title">
-        <h2>Payment <span class="highlight">evolution</span> for every industry</h2>
-      </div>
-
-      <div class="use-cases-grid">
-        <div class="use-case-card">
-          <div class="use-case-icon">
-            <svg width="40" height="48" viewBox="0 0 40 48" fill="none" aria-hidden="true">
-              <path d="M20 12C20 16 16 20 12 20C8 20 4 16 4 12C4 8 8 4 12 4C16 4 20 8 20 12Z" stroke="#537C7A" stroke-width="2"/>
-              <path d="M28 28L16 40L4 28" stroke="#537C7A" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Lending</h3>
-          <p>Get instant access to borrowers spending habits, income and expenses analysis, balance check and more.</p>
-        </div>
-
-        <div class="use-case-card">
-          <div class="use-case-icon">
-            <svg width="40" height="48" viewBox="0 0 40 48" fill="none" aria-hidden="true">
-              <path d="M12 8C12 12 8 16 4 16M20 4C20 8 16 12 12 12M28 32C28 28 24 24 20 24" stroke="#537C7A" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="20" cy="36" r="8" stroke="#537C7A" stroke-width="2"/>
-            </svg>
-          </div>
-          <h3>iGaming and Forex</h3>
-          <p>Boost conversions and reduce fraud. Receive payments in two clicks. Players get their winnings in seconds.</p>
-        </div>
-
-        <div class="use-case-card">
-          <div class="use-case-icon">
-            <svg width="40" height="48" viewBox="0 0 40 48" fill="none" aria-hidden="true">
-              <path d="M20 4L28 12L20 20L12 12L20 4Z" stroke="#537C7A" stroke-width="2"/>
-              <path d="M20 28L28 36L20 44L12 36L20 28Z" stroke="#537C7A" stroke-width="2"/>
-              <path d="M4 16L12 24L4 32M36 16L28 24L36 32" stroke="#537C7A" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>Crypto</h3>
-          <p>Get more deposits and eliminate chargebacks. Account is loaded with FIAT in two clicks. Users get their funds in seconds.</p>
-        </div>
-
-        <div class="use-case-card">
-          <div class="use-case-icon">
-            <svg width="40" height="48" viewBox="0 0 40 48" fill="none" aria-hidden="true">
-              <path d="M20 4L32 12V28L20 36L8 28V12L20 4Z" stroke="#537C7A" stroke-width="2"/>
-              <circle cx="20" cy="20" r="4" stroke="#537C7A" stroke-width="2"/>
-            </svg>
-          </div>
-          <h3>Wealth management</h3>
-          <p>Make your customers more wealthy with chattak. Receive payments in two clicks.</p>
-        </div>
-
-        <div class="use-case-card">
-          <div class="use-case-icon">
-            <svg width="40" height="48" viewBox="0 0 40 48" fill="none" aria-hidden="true">
-              <rect x="4" y="4" width="12" height="12" stroke="#537C7A" stroke-width="2"/>
-              <rect x="24" y="4" width="12" height="12" stroke="#537C7A" stroke-width="2"/>
-              <rect x="4" y="24" width="12" height="12" stroke="#537C7A" stroke-width="2"/>
-              <rect x="24" y="24" width="12" height="12" stroke="#537C7A" stroke-width="2"/>
-            </svg>
-          </div>
-          <h3>PSPs and EMIs</h3>
-          <p>Add open banking to your stack. Provide your customers the power to receive payments in two clicks and make payouts in seconds.</p>
-        </div>
-
-        <div class="use-case-card">
-          <div class="use-case-icon">
-            <svg width="40" height="48" viewBox="0 0 40 48" fill="none" aria-hidden="true">
-              <path d="M20 8C24 8 28 12 28 16V24C28 28 24 32 20 32C16 32 12 28 12 24V16C12 12 16 8 20 8Z" stroke="#537C7A" stroke-width="2"/>
-              <path d="M20 32V40M12 40H28" stroke="#537C7A" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3>eCommerce</h3>
-          <p>Give your users the payment experience they deserve with paying just with biometrics. No chargebacks with open banking. Just happy customers.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="section-cta">
-    <div class="container-large">
-      <div class="cta-parent">
-        <div class="cta-content">
-          <h2>Start <span class="highlight">building</span> today</h2>
-          <p>Get in touch to learn how our open banking solution can increase efficiency and speed for your business.</p>
-          <a href="#" class="cta-button-primary">Get in touch →</a>
-        </div>
-
-        <div class="cta-circles" aria-hidden="true">
-          <div class="cta-circle circle-1"></div>
-          <div class="cta-circle circle-2"></div>
-          <div class="cta-circle circle-3"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container-medium">
-      <div class="footer-content">
-        <div class="footer-column footer-brand">
-          <div class="footer-logo">
-            <div class="logo-symbol"><img src="images/logo.png" alt="Chattak_logo" height="40" width="40"></div>
-            <div class="logo-text">Chattak</div>
-          </div>
-          <p class="footer-copyright">
-            Copyright © <span class="copyright-year">2025</span> Chattak Ltd.<br />
-            All rights reserved.
-          </p>
-        </div>
-
-        <div class="footer-column">
-          <h4>About</h4>
-          <ul>
-            <li><a href="#product">Product</a></li>
-            <li><a href="#use-cases">Use cases</a></li>
-            <li><a href="/company">Company</a></li>
-            <li><a href="/blog">Blog</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h4>Platform</h4>
-          <ul>
-            <li><a href="https://docs.chattak.com" target="_blank" rel="noreferrer">Developers</a></li>
-            <li><a href="https://merchant.chattak.com/login" target="_blank" rel="noreferrer">Log in</a></li>
-            <li><a href="https://chattak.statuspage.io/" target="_blank" rel="noreferrer">Status</a></li>
-            <li><a href="#">Say Hi</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="/privacy-policy">Privacy policy</a></li>
-            <li><a href="/terms-of-use">Terms of Use</a></li>
-            <li><a href="/cookie-policy">Cookie Policy</a></li>
-            <li><a href="/merchant-terms-and-conditions">Merchant Terms & Conditions</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
