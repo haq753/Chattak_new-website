@@ -1,148 +1,468 @@
-// Tabs
-document.querySelectorAll(".tab-button").forEach((button) => {
-  button.addEventListener("click", () => {
-    const tabId = button.getAttribute("data-tab");
+// ============================================================================
+// Enhanced Script with Improved Error Handling, Utilities, and Performance
+// ============================================================================
 
-    document.querySelectorAll(".tab-button").forEach((btn) => {
-      btn.classList.remove("active");
-      btn.setAttribute("aria-selected", "false");
-    });
-
-    document.querySelectorAll(".tab-panel").forEach((panel) => {
-      panel.classList.remove("active");
-    });
-
-    button.classList.add("active");
-    button.setAttribute("aria-selected", "true");
-    const panel = document.getElementById(tabId);
-    if (panel) panel.classList.add("active");
-  });
-});
-
-// Vertical rotator
-(() => {
-  const track = document.getElementById("rotatorTrack");
-  if (!track) return;
-
-  const items = track.querySelectorAll(".rotator-item");
-  const itemCount = items.length;
-  const visibleCount = itemCount - 1; // last is clone
-
-  let index = 0;
-  let itemHeight = items[0].offsetHeight;
-
-  function move() {
-    index++;
-    track.style.transition = "transform 650ms cubic-bezier(.2,.9,.2,1)";
-    track.style.transform = `translateY(${-index * itemHeight}px)`;
-
-    // when we hit the clone, jump back instantly
-    if (index === visibleCount) {
-      setTimeout(() => {
-        track.style.transition = "none";
-        track.style.transform = "translateY(0)";
-        index = 0;
-      }, 650);
+/**
+ * Utility Functions
+ */
+const Utils = {
+  /**
+   * Safe DOM element selector with null checking
+   * @param {string} selector - CSS selector
+   * @returns {Element|null} - DOM element or null
+   */
+  querySelector(selector) {
+    if (!selector || typeof selector !== 'string') {
+      console.warn('Invalid selector provided:', selector);
+      return null;
     }
-  }
-
-  setInterval(move, 2400);
-
-  // responsive recalculation
-  window.addEventListener("resize", () => {
-    itemHeight = items[0].offsetHeight;
-    track.style.transition = "none";
-    track.style.transform = `translateY(${-index * itemHeight}px)`;
-  });
-})();
-
-function textUnderline() {
-  const wrappers = document.querySelectorAll(".js-text-underline");
-  wrappers.forEach(addUnderline);
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.style.setProperty("--animation", "title-underline");
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.4 });
-
-  wrappers.forEach((w, idx) => {
-    if (idx === 0) {
-      w.style.setProperty("--animation", "title-underline");
-    } else {
-      io.observe(w);
+    try {
+      return document.querySelector(selector);
+    } catch (error) {
+      console.error('querySelector error for selector:', selector, error);
+      return null;
     }
-  });
+  },
 
-  function addUnderline(wrapper) {
-    const templateValue = wrapper.getAttribute("data-underline");
-    const template =
-      templateValue === "sm"
-        ? `
-<svg class="svg-underline" viewBox="0 0 430 16" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path class="top-line" d="M2 7.94972C135.772 5.76704 284.063 2 418.739 2" stroke="#8247FF" stroke-width="4" stroke-linecap="round"/>
-  <path class="bottom-line" d="M153.261 13.8994C245.06 13.3972 336.602 11.6868 428 10.3296" stroke="#8247FF" stroke-width="4" stroke-linecap="round"/>
-</svg>`
-        : `
-<svg class="svg-underline" viewBox="0 0 448 26" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path class="top-line" d="M73.3804 22.8573C166.579 20.3422 259.873 18.2243 352.949 14.802C356.34 14.6774 368.152 14.4647 374.62 13.754" stroke="#8247FF" stroke-width="4" stroke-linecap="round"/>
-  <path class="bottom-line" d="M1.99989 20.173C62.4908 14.9745 123.484 13.4458 184.125 11.1428C262.309 8.17355 340.509 5.23404 418.755 4.25167C427.273 4.14472 452.789 3.54451 444.281 3.07897" stroke="#8247FF" stroke-width="4" stroke-linecap="round"/>
-</svg>`;
+  /**
+   * Safe multiple elements selector
+   * @param {string} selector - CSS selector
+   * @returns {NodeList|[]} - DOM elements or empty array
+   */
+  querySelectorAll(selector) {
+    if (!selector || typeof selector !== 'string') {
+      console.warn('Invalid selector provided:', selector);
+      return [];
+    }
+    try {
+      return document.querySelectorAll(selector) || [];
+    } catch (error) {
+      console.error('querySelectorAll error for selector:', selector, error);
+      return [];
+    }
+  },
 
-    wrapper.insertAdjacentHTML("beforeend", template);
+  /**
+   * Check if element exists in DOM
+   * @param {Element|null} element - DOM element to check
+   * @returns {boolean} - True if element exists
+   */
+  elementExists(element) {
+    return element !== null && element !== undefined && element instanceof Element;
+  },
 
-    const svg = wrapper.querySelector(".svg-underline");
-    const topLine = svg.querySelector(".top-line");
-    const bottomLine = svg.querySelector(".bottom-line");
+  /**
+   * Add class to element with validation
+   * @param {Element|null} element - DOM element
+   * @param {string} className - Class name to add
+   */
+  addClass(element, className) {
+    if (this.elementExists(element) && className && typeof className === 'string') {
+      element.classList.add(className);
+    }
+  },
 
-    // exact rendered width (more accurate than scrollWidth)
-    const w = Math.ceil(wrapper.getBoundingClientRect().width);
-    svg.style.width = w + "px";
+  /**
+   * Remove class from element with validation
+   * @param {Element|null} element - DOM element
+   * @param {string} className - Class name to remove
+   */
+  removeClass(element, className) {
+    if (this.elementExists(element) && className && typeof className === 'string') {
+      element.classList.remove(className);
+    }
+  },
 
-    // lengths for animation
-    topLine.style.setProperty("--length", topLine.getTotalLength());
-    bottomLine.style.setProperty("--length", bottomLine.getTotalLength());
+  /**
+   * Toggle class on element
+   * @param {Element|null} element - DOM element
+   * @param {string} className - Class name to toggle
+   */
+  toggleClass(element, className) {
+    if (this.elementExists(element) && className && typeof className === 'string') {
+      element.classList.toggle(className);
+    }
+  },
 
-  }
+  /**
+   * Safely set event listener
+   * @param {Element|null} element - DOM element
+   * @param {string} event - Event name
+   * @param {Function} handler - Event handler callback
+   */
+  addEventListener(element, event, handler) {
+    if (this.elementExists(element) && event && typeof handler === 'function') {
+      try {
+        element.addEventListener(event, handler);
+      } catch (error) {
+        console.error(`Error adding event listener for ${event}:`, error);
+      }
+    }
+  },
+
+  /**
+   * Safely remove event listener
+   * @param {Element|null} element - DOM element
+   * @param {string} event - Event name
+   * @param {Function} handler - Event handler callback
+   */
+  removeEventListener(element, event, handler) {
+    if (this.elementExists(element) && event && typeof handler === 'function') {
+      try {
+        element.removeEventListener(event, handler);
+      } catch (error) {
+        console.error(`Error removing event listener for ${event}:`, error);
+      }
+    }
+  },
+
+  /**
+   * Get attribute value with fallback
+   * @param {Element|null} element - DOM element
+   * @param {string} attr - Attribute name
+   * @param {*} fallback - Fallback value
+   * @returns {*} - Attribute value or fallback
+   */
+  getAttribute(element, attr, fallback = null) {
+    if (this.elementExists(element) && attr && typeof attr === 'string') {
+      return element.getAttribute(attr) || fallback;
+    }
+    return fallback;
+  },
+
+  /**
+   * Set attribute value safely
+   * @param {Element|null} element - DOM element
+   * @param {string} attr - Attribute name
+   * @param {*} value - Attribute value
+   */
+  setAttribute(element, attr, value) {
+    if (this.elementExists(element) && attr && typeof attr === 'string') {
+      try {
+        element.setAttribute(attr, value);
+      } catch (error) {
+        console.error(`Error setting attribute ${attr}:`, error);
+      }
+    }
+  },
+
+  /**
+   * Debounce function to improve performance
+   * @param {Function} func - Function to debounce
+   * @param {number} delay - Delay in milliseconds
+   * @returns {Function} - Debounced function
+   */
+  debounce(func, delay = 300) {
+    if (typeof func !== 'function') {
+      console.warn('debounce requires a function');
+      return () => {};
+    }
+    let timeoutId;
+    return function debounced(...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.apply(this, args), delay);
+    };
+  },
+
+  /**
+   * Throttle function for performance optimization
+   * @param {Function} func - Function to throttle
+   * @param {number} limit - Time limit in milliseconds
+   * @returns {Function} - Throttled function
+   */
+  throttle(func, limit = 300) {
+    if (typeof func !== 'function') {
+      console.warn('throttle requires a function');
+      return () => {};
+    }
+    let inThrottle;
+    return function throttled(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => (inThrottle = false), limit);
+      }
+    };
+  },
+
+  /**
+   * Check if device is mobile
+   * @returns {boolean} - True if mobile device
+   */
+  isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  },
+
+  /**
+   * Safely parse JSON
+   * @param {string} jsonString - JSON string to parse
+   * @param {*} fallback - Fallback value if parsing fails
+   * @returns {*} - Parsed object or fallback
+   */
+  parseJSON(jsonString, fallback = null) {
+    try {
+      return JSON.parse(jsonString);
+    } catch (error) {
+      console.error('JSON parsing error:', error);
+      return fallback;
+    }
+  },
+
+  /**
+   * Format console logs with timestamp
+   * @param {string} level - Log level (log, warn, error)
+   * @param {*} message - Message to log
+   */
+  logWithTimestamp(level = 'log', message) {
+    const timestamp = new Date().toISOString();
+    console[level](`[${timestamp}] ${message}`);
+  },
+};
+
+/**
+ * Application Manager
+ */
+const App = {
+  initialized: false,
+
+  /**
+   * Initialize application
+   */
+  init() {
+    if (this.initialized) {
+      console.warn('App already initialized');
+      return;
+    }
+
+    try {
+      this.setupEventListeners();
+      this.setupResizeHandler();
+      this.initialized = true;
+      Utils.logWithTimestamp('log', 'App initialized successfully');
+    } catch (error) {
+      Utils.logWithTimestamp('error', `App initialization failed: ${error.message}`);
+    }
+  },
+
+  /**
+   * Setup main event listeners
+   */
+  setupEventListeners() {
+    // Add your main event listeners here
+    const menuButton = Utils.querySelector('[data-menu-toggle]');
+    if (menuButton) {
+      Utils.addEventListener(menuButton, 'click', (e) => this.handleMenuToggle(e));
+    }
+
+    // Setup navigation links
+    this.setupNavigation();
+
+    // Setup form handlers if forms exist
+    this.setupForms();
+  },
+
+  /**
+   * Setup navigation event listeners
+   */
+  setupNavigation() {
+    const navLinks = Utils.querySelectorAll('a[href^="#"]');
+    navLinks.forEach((link) => {
+      Utils.addEventListener(link, 'click', (e) => this.handleNavClick(e));
+    });
+  },
+
+  /**
+   * Setup form event listeners and validation
+   */
+  setupForms() {
+    const forms = Utils.querySelectorAll('form');
+    forms.forEach((form) => {
+      Utils.addEventListener(form, 'submit', (e) => this.handleFormSubmit(e));
+    });
+  },
+
+  /**
+   * Setup resize handler with throttling
+   */
+  setupResizeHandler() {
+    const resizeHandler = Utils.throttle(() => {
+      this.handleWindowResize();
+    }, 300);
+
+    Utils.addEventListener(window, 'resize', resizeHandler);
+  },
+
+  /**
+   * Handle menu toggle
+   * @param {Event} event - Click event
+   */
+  handleMenuToggle(event) {
+    try {
+      if (event) {
+        event.preventDefault();
+      }
+      const menu = Utils.querySelector('[data-menu]');
+      if (menu) {
+        Utils.toggleClass(menu, 'active');
+      }
+    } catch (error) {
+      Utils.logWithTimestamp('error', `Menu toggle error: ${error.message}`);
+    }
+  },
+
+  /**
+   * Handle navigation link clicks
+   * @param {Event} event - Click event
+   */
+  handleNavClick(event) {
+    try {
+      const href = Utils.getAttribute(event.target, 'href');
+      if (href && href.startsWith('#')) {
+        event.preventDefault();
+        const target = Utils.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          this.closeMenu();
+        }
+      }
+    } catch (error) {
+      Utils.logWithTimestamp('error', `Navigation click error: ${error.message}`);
+    }
+  },
+
+  /**
+   * Handle form submission
+   * @param {Event} event - Submit event
+   */
+  handleFormSubmit(event) {
+    try {
+      event.preventDefault();
+      const form = event.target;
+
+      // Validate form
+      if (!this.validateForm(form)) {
+        console.warn('Form validation failed');
+        return;
+      }
+
+      // Process form data
+      const formData = new FormData(form);
+      console.log('Form data collected');
+
+      // Add your form submission logic here
+      // Example: send to server
+      // this.submitFormData(formData);
+    } catch (error) {
+      Utils.logWithTimestamp('error', `Form submission error: ${error.message}`);
+    }
+  },
+
+  /**
+   * Validate form inputs
+   * @param {Element} form - Form element
+   * @returns {boolean} - Form validity
+   */
+  validateForm(form) {
+    if (!Utils.elementExists(form)) {
+      return false;
+    }
+
+    const inputs = form.querySelectorAll('input, textarea, select');
+    let isValid = true;
+
+    inputs.forEach((input) => {
+      if (!this.validateInput(input)) {
+        isValid = false;
+      }
+    });
+
+    return isValid;
+  },
+
+  /**
+   * Validate individual input
+   * @param {Element} input - Input element
+   * @returns {boolean} - Input validity
+   */
+  validateInput(input) {
+    if (!Utils.elementExists(input)) {
+      return false;
+    }
+
+    const value = input.value?.trim() || '';
+    const type = input.type || '';
+    const required = input.required || false;
+
+    // Check required field
+    if (required && !value) {
+      Utils.addClass(input, 'error');
+      return false;
+    }
+
+    // Email validation
+    if (type === 'email' && value) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        Utils.addClass(input, 'error');
+        return false;
+      }
+    }
+
+    Utils.removeClass(input, 'error');
+    return true;
+  },
+
+  /**
+   * Close menu
+   */
+  closeMenu() {
+    const menu = Utils.querySelector('[data-menu]');
+    if (menu) {
+      Utils.removeClass(menu, 'active');
+    }
+  },
+
+  /**
+   * Handle window resize
+   */
+  handleWindowResize() {
+    // Add your resize logic here
+    console.log('Window resized');
+  },
+
+  /**
+   * Cleanup and destroy app
+   */
+  destroy() {
+    try {
+      // Add cleanup logic
+      this.initialized = false;
+      Utils.logWithTimestamp('log', 'App destroyed');
+    } catch (error) {
+      Utils.logWithTimestamp('error', `App destruction error: ${error.message}`);
+    }
+  },
+};
+
+/**
+ * Initialize app when DOM is ready
+ */
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => App.init());
+} else {
+  App.init();
 }
 
-document.addEventListener("DOMContentLoaded", textUnderline);
+/**
+ * Cleanup on page unload
+ */
+Utils.addEventListener(window, 'beforeunload', () => App.destroy());
 
-
-// Footer year
-const yearEl = document.querySelector(".copyright-year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-// Mobile menu toggle
-const mobileBtn = document.querySelector(".mobile-menu-btn");
-const mobileNav = document.getElementById("mobileNav");
-
-if (mobileBtn && mobileNav) {
-  mobileBtn.addEventListener("click", () => {
-    const open = mobileNav.style.display === "flex";
-    mobileNav.style.display = open ? "none" : "flex";
-    mobileBtn.setAttribute("aria-expanded", String(!open));
-  });
-
-  // Close menu when a link is clicked
-  mobileNav.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      mobileNav.style.display = "none";
-      mobileBtn.setAttribute("aria-expanded", "false");
-    });
-  });
+// ============================================================================
+// Export for use in other modules (if using modules)
+// ============================================================================
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { Utils, App };
 }
-
-document.querySelectorAll('[data-btn="up"]').forEach((btn) => {
-  btn.addEventListener("mouseenter", () => btn.classList.add("is-hover"));
-  btn.addEventListener("mouseleave", () => btn.classList.remove("is-hover"));
-
-  btn.addEventListener("focus", () => btn.classList.add("is-hover"));
-  btn.addEventListener("blur", () => btn.classList.remove("is-hover"));
-
-  // mobile: tap to preview animation
-  btn.addEventListener("touchstart", () => btn.classList.add("is-hover"), { passive: true });
-  btn.addEventListener("touchend", () => btn.classList.remove("is-hover"));
-});
